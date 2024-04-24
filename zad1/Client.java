@@ -33,18 +33,18 @@ public class Client extends Application {
 
         String translateToReturn = null;
 
-        Scanner scanner = new Scanner(System.in);
-
-        log("Podaj słowo do przetłumaczenia:");
-        inputWordToTranslate = scanner.nextLine();
-
-        log("Podaj jezyk na który chcesz przetłumaczyć np. EN, DE, ES, FR:");
-        inputLanguageCode = scanner.nextLine().toUpperCase();
-
-        log("Przetlumacz slowo: " + inputWordToTranslate);
-        log("Jezyk: " + inputLanguageCode);
-
-        scanner.close();
+//        Scanner scanner = new Scanner(System.in);
+//
+//        log("Podaj słowo do przetłumaczenia:");
+//        inputWordToTranslate = scanner.nextLine();
+//
+//        log("Podaj jezyk na który chcesz przetłumaczyć np. EN, DE, ES, FR:");
+//        inputLanguageCode = scanner.nextLine().toUpperCase();
+//
+//        log("Przetlumacz slowo: " + inputWordToTranslate);
+//        log("Jezyk: " + inputLanguageCode);
+//
+//        scanner.close();
 
         // TODO Klient ma odpytać serwer główny o dostępnym porcie dla danego języka
         //  Jeśli taki język istnieje zwraca port do serwera językowego

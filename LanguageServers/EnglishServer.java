@@ -8,41 +8,41 @@ import java.util.HashMap;
 import java.util.List;
 
 public class EnglishServer {
-
-    EnglishServer(){
-
-    }
-
-
     public static final int EnglishServerPORT = 1001;
 
-    static HashMap<String, String> EN = new HashMap<String, String>() {{
+    static HashMap<String, String> ENdictionary = new HashMap<String, String>() {{
         put("pies", "dog");
         put("kot", "cat");
         put("woda", "water");
     }};
 
     public static void main(String[] args) {
-        String toSend = null;
-        String wordToTranslate;
-        String clientAdress;
-        int clientPort;
+        try {
+            ServerSocket serverSocket = new ServerSocket(EnglishServerPORT);
+            while (true) {
+                Socket clientSocket = serverSocket.accept();
+                languageServerRequestHandler(clientSocket);
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
 
-
-        while (true){
+    public static void languageServerRequestHandler(Socket socket) {
+        Thread clientThread = new Thread(() -> {
+            String toSend = null;
+            String wordToTranslate;
+            String clientAdress;
+            int clientPort;
 
             try {
-                ServerSocket serverSocket = new ServerSocket(EnglishServerPORT);
-                Socket clientSocket = serverSocket.accept();
-                InputStream is = clientSocket.getInputStream();//czytanie danych z socketa -od clienta
-                OutputStream os = clientSocket.getOutputStream();
+                InputStream is = socket.getInputStream();//czytanie danych z socketa -od clienta
+                OutputStream os = socket.getOutputStream();
                 InputStreamReader isreader = new InputStreamReader(is);//ułatwienie aby w byteach nie pracować
                 OutputStreamWriter oswriter = new OutputStreamWriter(os);
                 BufferedReader br = new BufferedReader(isreader);//za pomoc tych dwóch łaczymy się ze strumieniami
-                BufferedWriter bw = new BufferedWriter(oswriter);
 
                 System.out.println("EnglishServer tutututu");
-
 
                 String[] msgFromMainServer = br.readLine().split(":");
 
@@ -50,31 +50,31 @@ public class EnglishServer {
                 clientAdress = msgFromMainServer[1];
                 clientPort = Integer.parseInt(msgFromMainServer[2]);
 
-
-                for (String part : EN.keySet()) {
-                    if(part.toLowerCase().equals(wordToTranslate)){
-                        toSend = EN.get(part);
+                for (String part : ENdictionary.keySet()) {
+                    if (part.toLowerCase().equals(wordToTranslate)) {
+                        toSend = ENdictionary.get(part);
                     }
                 }
 
-                if(toSend == null){
-                    toSend = "Takie słowo nie istnieje";
+                if (toSend == null) {
+                    toSend = "Brak słowa w słowniku";
                 }
 
                 // Zamknięcie strumieni i gniazda
                 br.close();
-                clientSocket.close();
-                serverSocket.close();
+                socket.close();
+                socket.close();
 
                 Socket clientResponseSocket = new Socket(clientAdress, clientPort);
                 PrintWriter clientResponseOut = new PrintWriter(clientResponseSocket.getOutputStream(), true);
                 clientResponseOut.println(toSend);
                 clientResponseSocket.close();
-
-
-            }catch (IOException e) {
+            } catch (IOException e) {
                 e.printStackTrace();
             }
-        }
+        });
+        clientThread.start();
     }
 }
+
+
