@@ -40,7 +40,11 @@ public class ClientUI{
                     Alert alert1 = new Alert(Alert.AlertType.NONE, "Brak słowa w słowniku", ButtonType.OK);
                     alert1.showAndWait();
 
-                } else {
+                } else if (translatedWord.equals("noLanguageServer")) {
+                    Alert alert1 = new Alert(Alert.AlertType.NONE, "Brak języka", ButtonType.OK);
+                    alert1.showAndWait();
+                }
+                else {
 
                     translationLabel.setText("Tłumaczeniem słowa: " + inputWord.getText().toUpperCase() + " w języku: " + language.getText().toUpperCase() + " jest: " + translatedWord.toUpperCase());
 

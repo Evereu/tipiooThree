@@ -63,12 +63,13 @@ public class MainServer {
 
                 log("Odczytany kod języka przez MainServer: " + lang);
 
-                String langserv = languageServersDic.get(lang).toString();
-
-                String clientAdress = socket.getInetAddress().getHostAddress().replace("/", "-");
 
                 if (languageServersDic.containsKey(lang)) {
-                    bw.write(languageServersDic.get(lang).toString());
+                    String langserv = languageServersDic.get(lang).toString();
+
+                    String clientAdress = socket.getInetAddress().getHostAddress().replace("/", "-");
+
+                    bw.write("languageServerExist");
                     bw.newLine();
                     bw.flush();
 
@@ -81,11 +82,16 @@ public class MainServer {
 
                     br.close();
                     socket.close();
+
+                }else{
+                    bw.write("noLanguageServer");
+                    bw.newLine();
+                    bw.flush();
                     socket.close();
                 }
                 br.close();
                 socket.close();
-                socket.close();
+
             } catch (IOException e) {
                 e.printStackTrace();
             }

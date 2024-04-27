@@ -65,9 +65,7 @@ public class FrenchServer {
                     }
                 }
 
-                if (toSend == null) {
-                    toSend = "Brak słowa w słowniku";
-                }
+
 
                 // Zamknięcie strumieni i gniazda
                 br.close();

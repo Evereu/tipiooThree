@@ -8,6 +8,7 @@ import java.net.InetAddress;
 import java.net.ServerSocket;
 import java.net.Socket;
 import java.util.Arrays;
+import java.util.Objects;
 import java.util.Scanner;
 
 
@@ -64,11 +65,15 @@ public class Client extends Application {
 
             System.out.println("@@@@@@@: " + isLanguageServerExist);
 
-            if (isLanguageServerExist != null) {
+            if (Objects.equals(isLanguageServerExist, "languageServerExist")) {
 
                 translateToReturn = serwerKlienta();
+            } else if (Objects.equals(isLanguageServerExist, "noLanguageServer")) {
+
+                translateToReturn = "noLanguageServer";
+                clientSocket.close();
             } else {
-                translateToReturn = "nie ma";
+                translateToReturn = "null";
                 clientSocket.close();
             }
 
