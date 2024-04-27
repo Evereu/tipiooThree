@@ -12,7 +12,16 @@ public class FrenchServer {
     static HashMap<String, String> FRdictionary = new HashMap<String, String>() {{
         put("pies", "chien");
         put("kot", "chat");
-        put("woda", "eau");
+        put("Samolot", "Avion");
+        put("Książka", "Livre");
+        put("Szachy", "Échecs");
+        put("Drzewo", "Arbre");
+        put("Motyl", "Papillon");
+        put("Komputer", "Ordinateur");
+        put("Plaża", "Plage");
+        put("Serce", "Cœur");
+        put("Miasto", "Ville");
+        put("Deszcz", "Pluie");
     }};
 
     public static void main(String[] args) {

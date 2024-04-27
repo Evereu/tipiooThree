@@ -12,7 +12,16 @@ public class GermanServer {
     static HashMap<String, String> DEdictionary = new HashMap<String, String>() {{
         put("pies", "Hund");
         put("kot", "Katze");
-        put("woda", "Wasser");
+        put("Samolot", "Flugzeug");
+        put("Książka", "Buch");
+        put("Szachy", "Schach");
+        put("Drzewo", "Baum");
+        put("Motyl", "Schmetterling");
+        put("Komputer", "Computer");
+        put("Plaża", "Strand");
+        put("Serce", "Herz");
+        put("Miasto", "Stadt");
+        put("Deszcz", "Regen");
     }};
 
     public static void main(String[] args) {

@@ -12,7 +12,16 @@ public class SpanishServer {
     static HashMap<String, String> ESdictionary = new HashMap<String, String>() {{
         put("pies", "perro");
         put("kot", "gato");
-        put("woda", "agua");
+        put("Samolot", "Avión");
+        put("Książka", "Libro");
+        put("Szachy", "Ajedrez");
+        put("Drzewo", "Árbol");
+        put("Motyl", "Mariposa");
+        put("Komputer", "Computadora");
+        put("Plaża", "Playa");
+        put("Serce", "Corazón");
+        put("Miasto", "Ciudad");
+        put("Deszcz", "Lluvia");
     }};
 
     public static void main(String[] args) {

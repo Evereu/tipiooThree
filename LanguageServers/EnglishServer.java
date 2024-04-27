@@ -13,7 +13,16 @@ public class EnglishServer {
     static HashMap<String, String> ENdictionary = new HashMap<String, String>() {{
         put("pies", "dog");
         put("kot", "cat");
-        put("woda", "water");
+        put("Samolot", "Airplane");
+        put("Książka", "Book");
+        put("Szachy", "Chess");
+        put("Drzewo", "Tree");
+        put("Motyl", "Butterfly");
+        put("Komputer", "Computer");
+        put("Plaża", "Beach");
+        put("Serce", "Heart");
+        put("Miasto", "City");
+        put("Deszcz", "Rain");
     }};
 
     public static void main(String[] args) {
